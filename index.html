@@ -37,12 +37,18 @@
     <noscript>لازم تشغّلين الجافاسكربت عشان يشتغل التطبيق.</noscript>
     <div id="root"></div>
     <script>
+      // Chrome / Edge offer installing as an app; keep the offer until the app is ready to show a button.
+      window.addEventListener('beforeinstallprompt', function (e) {
+        e.preventDefault();
+        window.__installPrompt = e;
+        window.dispatchEvent(new Event('nasaq-install-ready'));
+      });
       if ('serviceWorker' in navigator && location.protocol === 'https:') {
         window.addEventListener('load', function () {
           navigator.serviceWorker.register('sw.js').catch(function () {});
         });
       }
     </script>
-  <script src="/_expo/static/js/web/index-1b5d8f2a32485e9d8119143ca99e5c9a.js" defer></script>
+  <script src="/_expo/static/js/web/index-c7a6d4e3b50026e0647a566f19ad2cf7.js" defer></script>
 </body>
 </html>

@@ -69,7 +69,8 @@ self.addEventListener('push', (e) => {
       return self.registration.showNotification(r.title, {
         body: r.body,
         icon: new URL('icon-192.png', self.registration.scope).href,
-        badge: new URL('icon-192.png', self.registration.scope).href,
+        // Android shows the badge as a white silhouette in the status bar.
+        badge: new URL('badge.png', self.registration.scope).href,
         lang: 'ar',
         dir: 'rtl',
         tag: 'nasaq-reminder',
